@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<h1>Basic Form</h1>
-		<form>
+		<form name="formTest" method="post" action="validate.php" onsubmit="return validateForm()">
 			<label for="fullName">Full Name</label>
 			<input type="text" id="fullName" name="fullName"><br />
 			<br />
@@ -40,12 +40,59 @@
 				<input type="checkbox" id="sports" name="sport1" value="baseball"> Baseball<br />
 				<input type="checkbox" id="sports" name="sport2" value="basketball"> Basketball<br />
 				<input type="checkbox" id="sports" name="sport3" value="football"> Football<br />
-				<input type="checkbox" id="sports" name="sport4" value="hockey"> Hockey<br />
-				<input type="checkbox" id="sports" name="sport5" value="volleyball"> Volleyball<br />
-				<input type="checkbox" id="sports" name="sport6" value="lacrosse"> Lacrosse<br />
-				<input type="checkbox" id="sports" name="sport7" value="other"> Other<br />
-				<input type="checkbox" id="sports" name="sport8" value="none"> None<br />
+				<input type="checkbox" id="sports" name="sport4" value="soccer"> Soccer<br />
+				<input type="checkbox" id="sports" name="sport5" value="hockey"> Hockey<br />
+				<input type="checkbox" id="sports" name="sport6" value="volleyball"> Volleyball<br />
+				<input type="checkbox" id="sports" name="sport7" value="lacrosse"> Lacrosse<br />
+				<input type="checkbox" id="sports" name="sport8" value="other"> Other<br />
+				<input type="checkbox" id="sports" name="sport9" value="none"> None<br />
 			</fieldset>
+			
+			<br />
+			<input type="submit" id="submit" name="submit"><br />
 		</form>
+		
+		<script>
+			function validateForm() {
+				var name = document.forms["formTest"]["fullName"].value;
+				var email = document.forms["formTest"]["email"].value;
+				var phone = document.forms["formTest"]["phone"].value;
+				var city = document.forms["formTest"]["city"].value;
+				var state = document.forms["formTest"]["state"].value;
+				var zip = document.forms["formTest"]["zip"].value;
+				
+				if (name == "") {
+					alert("Name must be filled out");
+					return false;
+				}
+				if (email == "") {
+					alert("Email must be filled out");
+					return false;
+				}
+				if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formTest.email.value)) {
+					return (true);
+				}
+				else {
+					alert("You have entered an invalid email address!");
+					return (false);
+				}
+				if (phone == "") {
+					alert("Phone must be filled out");
+					return false;
+				}
+				if (city == "") {
+					alert("City must be filled out");
+					return false;
+				}
+				if (state == "") {
+					alert("State must be filled out");
+					return false;
+				}
+				if (zip == "") {
+					alert("Zip Code must be filled out");
+					return false;
+				}
+			}
+		</script>
 	</body>
 </html>
