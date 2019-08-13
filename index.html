@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<h1>Basic Form</h1>
-		<form name="formTest" method="post" action="validate.php" onsubmit="return validateForm()">
+		<form name="formTest" method="post" action="javascript:displayResults()" onsubmit="return validateForm()">
 			<label for="fullName">Full Name</label>
 			<input type="text" id="fullName" name="fullName"><br />
 			<br />
@@ -30,8 +30,8 @@
 			<fieldset>
 				<legend>Please answer yes or no for the following question.</legend>
 				<label for="country">Have you ever been out of the country?</label><br />
-				<input type="radio" id="country" name="country"> Yes<br />
-				<input type="radio" id="country" name="country"> No<br />
+				<input type="radio" id="country" name="yes"> Yes<br />
+				<input type="radio" id="country" name="no"> No<br />
 			</fieldset>
 			<br />
 			<fieldset>
@@ -52,7 +52,43 @@
 			<input type="submit" id="submit" name="submit"><br />
 		</form>
 		
+		<h2>Your Results</h2>
+		<p id="name-result"></p>
+		<p id="email-result"></p>
+		<p id="phone-result"></p>
+		<p id="city-result"></p>
+		<p id="state-result"></p>
+		<p id="zip-result"></p>
+		<p id="country-result"></p>
+		<p id="sports-result"></p>
+		
 		<script>
+			function displayResults() {
+				var name = document.forms["formTest"]["fullName"].value;
+				document.getElementById("name-result").innerHTML = name;
+				
+				var email = document.forms["formTest"]["email"].value;
+				document.getElementById("email-result").innerHTML = email;
+				
+				var phone = document.forms["formTest"]["phone"].value;
+				document.getElementById("phone-result").innerHTML = phone;
+				
+				var city = document.forms["formTest"]["city"].value;
+				document.getElementById("city-result").innerHTML = city;
+				
+				var state = document.forms["formTest"]["state"].value;
+				document.getElementById("state-result").innerHTML = state;
+				
+				var zip = document.forms["formTest"]["zip"].value;
+				document.getElementById("zip-result").innerHTML = zip;
+				
+				var country = document.getElementById('country').value;
+				document.getElementById("country-result").innerHTML = country;
+				
+				var sports = document.forms["formTest"]["sports"].value;
+				document.getElementById("sports-result").innerHTML = sports;				
+			}
+			
 			function validateForm() {
 				var name = document.forms["formTest"]["fullName"].value;
 				var email = document.forms["formTest"]["email"].value;
